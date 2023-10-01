@@ -19,6 +19,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
+  align-items:center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -84,10 +85,6 @@ body {
 .square.selected {
   color: #fff;
   background: #09f;
-}
-.square.pepito {
-  color: #fff;
-  background: rgb(255, 217, 0);
 }
 
 .winner {

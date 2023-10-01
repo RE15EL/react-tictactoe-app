@@ -81,7 +81,7 @@ export const Tictactoe = ()=>{
     return (
         <div className="board">
             <h1>Tic tac toe</h1>
-            <div className="game">
+            <section className="game">
                 {
                     board.map((_, index) => 
                         <Square 
@@ -93,11 +93,35 @@ export const Tictactoe = ()=>{
                         </Square>
                     )
                 }
-            </div>
+            </section>
             <section className="turn">
                 <Square isSelected={ turn === turns.X }> {turns.X} </Square>
                 <Square isSelected={ turn === turns.O }> {turns.O} </Square>
             </section>
+                {
+                    /* show winner modal */
+                    winner !== null && (
+                        <section className="winner">
+                            <div className="text">
+                                <h2> 
+                                    { 
+                                        winner === false
+                                            ? 'Empate'
+                                            : 'Ganador:'
+                                    }
+                                </h2>
+                            </div>
+
+                            <header className="win">
+                               { winner && <Square > { winner } </Square> }
+                            </header>
+
+                            <footer>
+                                <button> Play again</button>
+                            </footer>
+                        </section>
+                    )
+                }
         </div>        
     )
 }
