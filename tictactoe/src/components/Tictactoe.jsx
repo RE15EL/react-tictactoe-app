@@ -3,10 +3,15 @@ import { useState } from "react";
 useState
 
 // square component
-export const Square = ({ children, index, isSelected })=>{
+export const Square = ({ children, index, isSelected, updateBoard })=>{
     const squareClassName = `square ${isSelected? "selected" : ""}`;
+
+    const handleClick = ()=>{
+        updateBoard(index);
+    }
+
     return (
-        <div className={ squareClassName }>
+        <div className={ squareClassName } onClick={ handleClick }>
             {children}
         </div>
     )
@@ -25,6 +30,16 @@ export const Tictactoe = ()=>{
     
     // turn state
     const [turn, setTurn] = useState(turns.X);
+
+    // update board 
+    const updateBoard = (index) => {
+        const newBoard = [...board];
+        newBoard[index] = turn;
+        setBoard(newBoard);
+
+        const currentTurn = turn === turns.X ? turns.O : turns.X;
+        setTurn(currentTurn);
+    }
     
     return (
         <div className="board">
@@ -32,7 +47,13 @@ export const Tictactoe = ()=>{
             <div className="game">
                 {
                     board.map((_, index) => 
-                        <Square key={index} index={index}> {index} </Square>
+                        <Square 
+                            key={index} 
+                            index={index}
+                            updateBoard={updateBoard}
+                        >
+                            { board[index] } 
+                        </Square>
                     )
                 }
             </div>
