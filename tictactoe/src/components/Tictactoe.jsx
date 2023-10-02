@@ -2,11 +2,9 @@ import { useState } from "react";
 import confetti from 'canvas-confetti' // winner effects 
 import { Square } from './Square.jsx';
 import { turns, winnerCombis } from '../utils/constants.js';
+import { WinnerModal } from './WinnerModal.jsx';
 
-
-export const Tictactoe = ()=>{
-    
-    
+export const Tictactoe = ()=>{      
     // board state
     const [board, setBoard] = useState(Array(9).fill(null)); // 9 x 9 array
     
@@ -80,31 +78,7 @@ export const Tictactoe = ()=>{
                 <Square isSelected={ turn === turns.X }> {turns.X} </Square>
                 <Square isSelected={ turn === turns.O }> {turns.O} </Square>
             </section>
-                {
-                    /* show winner modal */
-                    winner !== null && (
-                        <section className="winner">
-                            <div className="text">
-                                <h2> 
-                                    { 
-                                        winner === false
-                                            ? 'Tie'
-                                            : 'Winner:'
-                                    }
-                                </h2>
-                                <header className="win">
-                                    { winner && <Square > { winner } </Square> }
-                                </header>
-
-                                <footer>
-                                    <button onClick={resetGame}> Play again</button>
-                                </footer>
-                            </div>
-
-                            
-                        </section>
-                    )
-                }
+            <WinnerModal winner={winner}  resetGame={resetGame}/>
         </div>        
     )
 }
