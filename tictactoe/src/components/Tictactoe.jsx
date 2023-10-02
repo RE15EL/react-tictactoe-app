@@ -61,6 +61,13 @@ export const Tictactoe = ()=>{
         return null;
     }
 
+    // reset game
+    const resetGame = ()=>{
+        setBoard(Array(9).fill(null));
+        setTurn(turns.X);
+        setWinner(null);
+    }
+
     // update board 
     const updateBoard = (index) => {
         if (board[index] || winner) return; //stop if already selected or have a winner
@@ -117,7 +124,7 @@ export const Tictactoe = ()=>{
                             </header>
 
                             <footer>
-                                <button> Play again</button>
+                                <button onClick={resetGame}> Play again</button>
                             </footer>
                         </section>
                     )
