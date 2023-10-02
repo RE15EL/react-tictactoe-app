@@ -1,22 +1,6 @@
 import { useState } from "react";
 import confetti from 'canvas-confetti' // winner effects 
-
-useState
-
-// square component
-export const Square = ({ children, index, isSelected, updateBoard })=>{
-    const squareClassName = `square ${isSelected? "selected" : ""}`;
-
-    const handleClick = ()=>{
-        updateBoard(index);
-    }
-
-    return (
-        <div className={ squareClassName } onClick={ handleClick }>
-            {children}
-        </div>
-    )
-}
+import { Square } from './Square.jsx';
 
 
 export const Tictactoe = ()=>{
@@ -54,7 +38,6 @@ export const Tictactoe = ()=>{
                 boardToCheck[a] === boardToCheck[b] &&
                 boardToCheck[a] === boardToCheck[c]    
             ) {
-                confetti(true);
                 return boardToCheck[a];
             }   
         }
@@ -81,6 +64,7 @@ export const Tictactoe = ()=>{
 
         const newWinner = checkWinner(newBoard);
         if( newWinner){
+            confetti();
             setWinner(newWinner)
         }else if( newBoard.every(x => x !== null) ){
             setWinner(false);
@@ -116,8 +100,8 @@ export const Tictactoe = ()=>{
                                 <h2> 
                                     { 
                                         winner === false
-                                            ? 'Empate'
-                                            : 'Ganador:'
+                                            ? 'Tie'
+                                            : 'Winner:'
                                     }
                                 </h2>
                                 <header className="win">
