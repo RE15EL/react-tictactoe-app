@@ -38,6 +38,9 @@ export const Tictactoe = ()=>{
         setBoard(Array(9).fill(null));
         setTurn(turns.X);
         setWinner(null);
+
+        window.localStorage.removeItem('board');	
+        window.localStorage.removeItem('turn');
     }
 
     // update board 
