@@ -34,6 +34,8 @@ body {
   width: fit-content;
   margin: 40px auto;
   text-align: center;
+  /* position: relative; */
+
 }
 
 .board h1 {
@@ -68,17 +70,19 @@ body {
 .turn {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 8px;
   margin: 15px auto;
   width: fit-content;
-  position: relative;
   border-radius: 10px;
 }
 
 .turn .square,
-.winner .square {
-  width: 70px;
-  height: 70px;
-  pointer-events: none;
+.win .square {
+  width: 50px;
+  height: 50px;
+  font-size: 32px !important;
+  pointer-events: none;  
   border-color: transparent;
 }
 
@@ -95,19 +99,17 @@ body {
   left: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #242424;
 }
 
 .winner .text {
   background: #111;
-  height: 300px;
+  height: 350px;
   width: 320px;
   border: 2px solid #eee;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   gap: 20px;
 }
 

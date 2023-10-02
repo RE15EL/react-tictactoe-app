@@ -117,15 +117,16 @@ export const Tictactoe = ()=>{
                                             : 'Ganador:'
                                     }
                                 </h2>
+                                <header className="win">
+                                    { winner && <Square > { winner } </Square> }
+                                </header>
+
+                                <footer>
+                                    <button onClick={resetGame}> Play again</button>
+                                </footer>
                             </div>
 
-                            <header className="win">
-                               { winner && <Square > { winner } </Square> }
-                            </header>
-
-                            <footer>
-                                <button onClick={resetGame}> Play again</button>
-                            </footer>
+                            
                         </section>
                     )
                 }
