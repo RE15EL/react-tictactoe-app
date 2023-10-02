@@ -85,10 +85,15 @@ body {
   pointer-events: none;  
   border-color: transparent;
 }
+.win .square {
+  transition: all .3s ease-in-out;
+  box-shadow: 0 0 5px #fff , 0 0 10px #fffffff0, 0 0 15px #ffffffc2;
+}
 
 .square.selected {
-  color: #fff;
-  background: #09f;
+  color: #000;
+  background: #fff;
+  font-weight: bold !important;
 }
 
 .winner {

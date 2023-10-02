@@ -82,12 +82,15 @@ export const Tictactoe = ()=>{
         const newWinner = checkWinner(newBoard);
         if( newWinner){
             setWinner(newWinner)
+        }else if( newBoard.every(x => x !== null) ){
+            setWinner(false);
         }
     }
     
     return (
         <div className="board">
-            <h1>Tic tac toe</h1>
+            <h1>Tic Tac Toe</h1>
+            <button onClick={resetGame}>Reset</button>
             <section className="game">
                 {
                     board.map((_, index) => 
