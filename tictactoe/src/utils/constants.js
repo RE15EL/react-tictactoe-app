@@ -1,7 +1,7 @@
 // turns
 export const turns = {
-    X: 'X',
-    O: 'O'
+    X: '🟥',
+    O: '❎'
 };
 
 export const winnerCombis = [

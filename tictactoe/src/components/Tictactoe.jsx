@@ -6,15 +6,12 @@ import { WinnerModal } from './WinnerModal.jsx';
 
 export const Tictactoe = ()=>{      
     // board state
-    const [board, setBoard] = useState(Array(9).fill(null)); // 9 x 9 array
-    
+    const [board, setBoard] = useState(Array(9).fill(null)); // 9 x 9 array    
     // turn state
     const [turn, setTurn] = useState(turns.X);
-
     //winner state
     const [winner, setWinner] = useState(null); // true = winner - false = empate 
     
-
     // check winner
     const checkWinner = (boardToCheck)=>{
         for (const combis of winnerCombis) {
