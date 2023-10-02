@@ -6,9 +6,15 @@ import { WinnerModal } from './WinnerModal.jsx';
 
 export const Tictactoe = ()=>{      
     // board state
-    const [board, setBoard] = useState(Array(9).fill(null)); // 9 x 9 array    
+    const [board, setBoard] = useState( ()=>{
+        const boardStorage = JSON.parse(localStorage.getItem('board')); // get board from local storage
+        return boardStorage ? boardStorage : Array(9).fill(null); // init the board state
+    })  
     // turn state
-    const [turn, setTurn] = useState(turns.X);
+    const [turn, setTurn] = useState( ()=>{
+        const turnStorage = localStorage.getItem('turn'); // get turn from local storage
+        return turnStorage ?? turns.X; // init the turn state
+    });
     //winner state
     const [winner, setWinner] = useState(null); // true = winner - false = empate 
     
@@ -44,6 +50,10 @@ export const Tictactoe = ()=>{
 
         const currentTurn = turn === turns.X ? turns.O : turns.X;
         setTurn(currentTurn);
+
+        // save new board an currentTurn
+        window.localStorage.setItem('board',JSON.stringify(newBoard));
+        window.localStorage.setItem('turn', JSON.stringify(currentTurn));
 
         const newWinner = checkWinner(newBoard);
         if( newWinner){
