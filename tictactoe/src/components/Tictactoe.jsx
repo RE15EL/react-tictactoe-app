@@ -1,14 +1,11 @@
 import { useState } from "react";
 import confetti from 'canvas-confetti' // winner effects 
 import { Square } from './Square.jsx';
+import { turns, winnerCombis } from '../utils/constants.js';
 
 
 export const Tictactoe = ()=>{
-    // turns
-    const turns = {
-        X: 'X',
-        O: 'O'
-    };
+    
     
     // board state
     const [board, setBoard] = useState(Array(9).fill(null)); // 9 x 9 array
@@ -18,16 +15,7 @@ export const Tictactoe = ()=>{
 
     //winner state
     const [winner, setWinner] = useState(null); // true = winner - false = empate 
-    const winnerCombis = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6]
-    ];
+    
 
     // check winner
     const checkWinner = (boardToCheck)=>{
